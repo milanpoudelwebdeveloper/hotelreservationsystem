@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"hotelsystem/pkg/config"
+	"hotelsystem/pkg/models"
 	"hotelsystem/pkg/render"
 	"net/http"
 )
@@ -27,9 +28,13 @@ func NewHandlers(r *Repository) {
 	Repo = r
 }
 func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "home.page.tmpl")
+	render.RenderTemplate(w, "home.page.tmpl", &models.TemplateData{})
 }
 
 func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "about.page.tmpl")
+	stringMap := make(map[string]string)
+	stringMap["test"] = "Hello again"
+	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{
+		StringMap: stringMap,
+	})
 }
