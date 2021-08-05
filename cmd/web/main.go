@@ -4,7 +4,8 @@ import (
 	"hotelsystem/pkg/handlers"
 	"net/http"
 )
-const portNumber = ":8081"
+
+const portNumber = ":8080"
 
 func main() {
 	http.HandleFunc("/", handlers.Home)
