@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/css/datepicker-bs4.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <style>
+        .my-footer {
+            height: 5em;
+            background-color: #163b65;
+            margin-top: 1em;
+            padding: 1em;
+            color: white;
+            font-size: 80%;
+        }
+
+        .room-image {
+            max-width: 50%;
+        }
+
+        .redText {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Rooms
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="generals.html">General's Quarter</a></li>
+                            <li><a class="dropdown-item" href="majors.html">Major's suite</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html" tabindex="-1" aria-disabled="true">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reservation.html" tabindex="-1" aria-disabled="true">Book Now</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="mt-5">Search for availability</h1>
+                <form action="/reservation.html" method="GET" class="needs-validation" novalidate>
+
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-row" id="reservation-datess">
+                                <div class="col">
+                                    <input required type="text" class="form-control" name="start" placeholder="Arrival Date">
+                                </div>
+                                <div class="col">
+                                    <input required type="text" class="form-control" name="end" placeholder="Departure Date">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Search availability</button>
+                </form>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <p id="paragraph">this is my text</p>
+                <p>
+                    <button id="colorButton" class="btn btn-outline-secondary">Click me</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row my-footer">
+        <div class="col">
+            Left
+        </div>
+        <div class="col">
+            Middle
+
+        </div>
+        <div class="col">
+            Right
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+        integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+        crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/datepicker-full.min.js"></script>
+    // let myEl = document.getElementById("paragraph")
+    // myEl.classList.add("redText")
+    <script>
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+        document.getElementById("colorButton").addEventListener("click", function () {
+            let myEl = document.getElementById("paragraph")
+            if (myEl.classList.contains("redText")) {
+                myEl.classList.remove("redText")
+
+            } else {
+                myEl.classList.add("redText")
+            }
+        })
+        const elem = document.getElementById('reservation-datess');
+        const rangepicker = new DateRangePicker(elem, {
+            // ...options
+            format:"yyyy-mm-dd",
+        });
+    </script>
+</body>
+
+</html>
