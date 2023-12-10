@@ -1,0 +1,1 @@
+A full stack project for managing a hotel. It's key features are listing and creating rooms, booking and reserving. It is written in Golang and the frontend is in HTML and css serving with the use of Go templates.
